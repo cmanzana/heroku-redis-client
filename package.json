@@ -1,0 +1,25 @@
+{
+  "name": "heroku-redis-client",
+  "version": "0.1.0",
+  "description": "redis client that works with heroku redis to go",
+  "main": "index.js",
+  "homepage": "https://github.com/cmanzana/heroku-redis-client",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "dependencies": {
+    "redis": ">=0.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmanzana/heroku-redis-client"
+  },
+  "keywords": [
+    "heroku", "redis", "client", "redistogo"
+  ],
+  "devDependencies": {
+    "tap": ""
+  },
+  "author": "Carlos Manzanares <carlos.manzanares+npm@gmail.com>",
+  "license": "MIT"
+}
