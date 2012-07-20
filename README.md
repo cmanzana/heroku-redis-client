@@ -1,5 +1,7 @@
 # heroku-redis-client
 
+[![Build Status](https://secure.travis-ci.org/cmanzana/heroku-redis-client.png)](http://travis-ci.org/cmanzana/heroku-redis-client)
+
 npm module to easily connect to the "redis to go" facilities in heroku (https://addons.heroku.com/redistogo)
 
 ## Installation
