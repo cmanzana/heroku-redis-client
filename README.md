@@ -17,40 +17,43 @@ default port
 
     var connect = require('connect'),
         RedisStore = require('connect-redis')(connect),
-        redisClient = require('heroku-redis-client')();
+        redis = require('heroku-redis-client');
 
 
     connect.createServer(
         connect.cookieParser(),
-        connect.session({ store: new RedisStore({ client: redisClient }), secret: 'keyboard cat' })
+        connect.session({ store: new RedisStore({ client: redis.createClient() }), secret: 'keyboard cat' })
     );
 
 See https://github.com/visionmedia/connect-redis/ for information on how to use the returned redisClient as your session store
 
 ### Using redis as your data store
 
-    var redisClient = require('heroku-redis-client')()
+    var redis = require('heroku-redis-client'),
+        redisClient = redis.createClient();
     redisClient.set('key', 'value');
 
-See https://github.com/mranney/node_redis for information on how to use the returned redisClient
+See https://github.com/mranney/node_redis for information on how to use the wrapped redis
 
 ## Source
 
     var redis = require('redis'),
         url = require('url');
 
-    module.exports = function () {
+    exports.createClient = function (port_arg, host_arg, options) {
         var client;
         if (process.env.REDISTOGO_URL) {
             var redisURL = url.parse(process.env.REDISTOGO_URL);
-            client = redis.createClient(redisURL.port, redisURL.hostname);
+            client = redis.createClient(redisURL.port, redisURL.hostname, options);
             client.auth(redisURL.auth.split(":")[1]);
         } else {
-            client = redis.createClient();
+            client = redis.createClient(port_arg, host_arg, options);
         }
 
         return client;
-    }
+    };
+
+    exports.redis = redis;
 
 
 ## License
