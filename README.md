@@ -32,5 +32,24 @@ See https://github.com/visionmedia/connect-redis/ for information on how to use 
 
 See https://github.com/mranney/node_redis for information on how to use the returned redisClient
 
+## Source
+
+    var redis = require('redis'),
+        url = require('url');
+
+    module.exports = function () {
+        var client;
+        if (process.env.REDISTOGO_URL) {
+            var redisURL = url.parse(process.env.REDISTOGO_URL);
+            client = redis.createClient(redisURL.port, redisURL.hostname);
+            client.auth(redisURL.auth.split(":")[1]);
+        } else {
+            client = redis.createClient();
+        }
+
+        return client;
+    }
+
+
 ## License
 [MIT](https://github.com/cmanzana/heroku-redis-client/blob/master/MIT-LICENSE)
