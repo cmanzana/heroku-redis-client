@@ -10,9 +10,6 @@ npm install heroku-redis-client
 
 ## Usage
 
-Notice that when not in heroku (e.g.: testing in our local machine), it will try to connect to your localhost on redis
-default port
-
 ### Using redis as your session store
 
     var connect = require('connect'),
