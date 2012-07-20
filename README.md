@@ -54,4 +54,5 @@ See https://github.com/mranney/node_redis for information on how to use the wrap
 
 
 ## License
+
 [MIT](https://github.com/cmanzana/heroku-redis-client/blob/master/MIT-LICENSE)
