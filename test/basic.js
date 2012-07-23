@@ -1,8 +1,5 @@
 var assert = require('assert'),
-    sys = require('sys'),
     redis = require('../index');
-
-
 
 module.exports = {
   'should load locally': function() {
