@@ -23,6 +23,6 @@
   "devDependencies": {
     "expresso": "0.9.2"
   },
-  "author": "Carlos Manzanares <carlos.manzanares+npm@gmail.com>",
+  "author": "Carlos Manzanares <carlos.manzanares@gmail.com>",
   "license": "MIT"
 }
