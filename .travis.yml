@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - 0.8
 env:
-  - SECURE=IpGg/P4OlL9OZOxU/UN58n5ic9IJRGStXctCTyoHX1u68ouFU/yRsTXAgbafgWY3BxaPt8hBr/ctIMf6hMBY5LEfPWJfHz8X7MoObSbeORb9ZCRUYdQ79GEFpB0YKqLuL4aCtz67qRFl2pqynf0lmGr9DZtQCM1ei0tyLNvA7xU=
+  - {secure: "IpGg/P4OlL9OZOxU/UN58n5ic9IJRGStXctCTyoHX1u68ouFU/yRsTXAgbafgWY3BxaPt8hBr/ctIMf6hMBY5LEfPWJfHz8X7MoObSbeORb9ZCRUYdQ79GEFpB0YKqLuL4aCtz67qRFl2pqynf0lmGr9DZtQCM1ei0tyLNvA7xU="}
 notifications:
   email:
     on_success: never
