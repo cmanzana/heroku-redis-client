@@ -2,7 +2,7 @@ var assert = require('assert'),
     redis = require('../index');
 
 describe('heroku-redis-client', function() {
-    it('should load locally', function() {
+    it('should load locally', function(done) {
         var redisClient = redis.createClient();
 
         assert.ok(redisClient);
@@ -11,17 +11,20 @@ describe('heroku-redis-client', function() {
         assert.ok(redis.redis);
 
         redisClient.quit();
+
+        done();
     });
 
-    it('should load when in heroku', function() {
+    it('should load when in heroku', function(done) {
         var currentREDISTOGO_URL = process.env.REDISTOGO_URL;
         process.env.REDISTOGO_URL = "redis://user:password@chubb.redistogo.com:9332/";
 
 
         var redisClient = redis.createClient();
         redisClient.on('error', function (err) {
-            assert.includes(err.toString(), 'invalid password');
+            assert.ok(err.toString().indexOf('invalid password') != -1);
             redisClient.quit();
+            done();
         });
 
         assert.ok(redisClient);
@@ -29,8 +32,6 @@ describe('heroku-redis-client', function() {
         assert.equal(redisClient.host, "chubb.redistogo.com");
         assert.equal(redisClient.auth_pass, "password");
         assert.ok(redis.redis);
-
-        redisClient.quit();
 
         process.env.REDISTOGO_URL = currentREDISTOGO_URL;
     });
